@@ -1,0 +1,10 @@
+<div id="constructions-list">
+  <ul class="list-group">
+    <% @constructions.each do |constr| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to constr.name, edit_preprocessor_path(constr), class: "list-group-item-action link-primary"%>
+        <%= button_to 'Удалить', preprocessor_path(constr), method: :delete, confirm: 'Вы уверены?', class: "btn btn-outline-danger"%>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+<div class="card mb-2" id="construction-table"
+     <%= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>
+  <div class="card-header"
+       id="construction-title">
+    <%= @construction.name %>
+  </div>
+  <% @rods.sort_by { |r| r.place_id  }.each do |rod| %>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Стержень <%= rod.place_id %></th>
+          <% x = rod.l / 11 %>
+          <% rod.n.size.times do |i| %>
+            <th><%= (x * i).round(2) %></th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>N</td>
+              <% rod.n.size.times do |i| %>
+                <td><%= rod.n[i].round(2) %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <td>U</td>
+              <% rod.u.size.times do |i| %>
+                <td><%= rod.u[i].round(2) %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <td><%= 963.chr  %></td>
+              <% rod.s.size.times do |i| %>
+                <td class="<%= rod.s[i] <= rod.b && rod.s[i] >= -rod.b ? "text-success" : "text-danger" %>"><%= rod.s[i].round(2) %></td>
+              <% end %>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

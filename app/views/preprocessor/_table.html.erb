@@ -1,0 +1,37 @@
+<div class="card mb-2" id="construction-table" data-controller="edit-construction-table"
+     <%= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>
+  <div class="card-header"
+       data-action="click->edit-construction-table#editTitle"
+       data-search-target="title"
+       id="construction-title">
+    <%= @construction.name %>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Длина стержня (L)</th>
+        <th scope="col">Площадь поперечного сечения (A)</th>
+        <th scope="col">Модуль упругости (E)</th>
+        <th scope="col">Допускаемое напряжение (<%= 963.chr %>)</th>
+        <th scope="col">Сосредоточенная нагрузка (F)</th>
+        <th scope="col">Погонная нагрузка (Q)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @rods.sort_by { |r| r.place_id  }.each do |rod| %>
+        <tr data-search-target="constructRow">
+          <td><%= rod.place_id %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.l %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.a %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.e %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.b %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.f %></td>
+          <td data-action="click->edit-construction-table#editCell"><%= rod.q %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

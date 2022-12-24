@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-evenly mb-2 mt-2" data-controller="edit-construction-table">
+      <button type="button" class="btn btn-outline-success me-4" data-action="click->edit-construction-table#addRow">
+        Добавить стержень
+      </button>
+      <button type="button" class="btn btn-outline-danger me-4" data-action="click->edit-construction-table#deleteRow">
+        Удалить стержень
+      </button>
+      <div class="form-check me-4">
+        <% if @construction.left_support %>
+          <input class="form-check-input" type="checkbox" id="support-left" data-search-target="supportLeft" checked>
+        <% else %>
+          <input class="form-check-input" type="checkbox" id="support-left" data-search-target="supportLeft">
+        <% end %>
+        <label class="form-check-label" for="support-left">
+          Опора слева
+        </label>
+      </div>
+      <div class="form-check">
+        <% if @construction.right_support %>
+          <input class="form-check-input" type="checkbox" id="support-right" data-search-target="supportRight" checked>
+        <% else %>
+          <input class="form-check-input" type="checkbox" id="support-right" data-search-target="supportRight">
+        <% end %>
+        <label class="form-check-label" for="support-right">
+          Опора справа
+        </label>
+      </div>
+    </div>
+  </div>
+  <%= render partial: 'preprocessor/table' %>
+  <div class="d-flex justify-content-center">
+    <div data-controller="edit-construction-table">
+      <button type="button" class="btn btn-primary me-2" data-action="click->edit-construction-table#saveEdited">Сохранить</button>
+    </div>
+    <div data-controller="visualizer">
+      <button type="button" class="btn btn-info" data-action="click->visualizer#draw">Отрисовка</button>
+    </div>
+  </div>
+  <%= render partial: 'preprocessor/visualizer' %>
+</div>

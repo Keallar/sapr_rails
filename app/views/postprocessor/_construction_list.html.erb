@@ -1,0 +1,9 @@
+<div id="constructions-list">
+  <ul class="list-group">
+    <% @constructions.each do |constr| %>
+      <li class="list-group-item d-flex justify-content-center align-items-center">
+        <%= link_to constr.name, postprocessor_path(constr), class: "list-group-item-action link-primary mb-2 mt-2"%>
+      </li>
+    <% end %>
+  </ul>
+</div>
