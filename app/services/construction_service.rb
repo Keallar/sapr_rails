@@ -118,7 +118,7 @@ class ConstructionService
     u = Array.new(11, 0.0)
     xs = Array.new(11, 0.0)
     xs.size.times do |i|
-      xs[i] = (i * rod.l / 11).to_f
+      xs[i] = (i * rod.l / 10).to_f
     end
     u.size.times do |i|
       u[i] = ((1 - (xs[i] / rod.l)) * rod.delta_0 + (xs[i] / rod.l) * rod.delta_l +
@@ -131,7 +131,7 @@ class ConstructionService
     n = Array.new(11, 0.0)
     xs = Array.new(11, 0.0)
     xs.size.times do |i|
-      xs[i] = (i * rod.l / 11).to_f
+      xs[i] = (i * rod.l / 10).to_f
     end
     n.size.times do |i|
       n[i] = (((rod.e * rod.a) / rod.l) * (rod.delta_l - rod.delta_0) +
@@ -144,7 +144,7 @@ class ConstructionService
     s = Array.new(11, 0.0)
     xs = Array.new(11, 0.0)
     xs.size.times do |i|
-      xs[i] = (i * rod.l / 11).to_f
+      xs[i] = (i * rod.l / 10).to_f
     end
     s.size.times do |i|
       s[i] = (rod.n[i] / rod.a).to_f
