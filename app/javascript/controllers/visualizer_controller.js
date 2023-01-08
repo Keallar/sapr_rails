@@ -1,6 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+    connect() {
+        // this.draw()
+    }
+
     draw() {
         let constructionTable = document.getElementById("construction-table")
             .getElementsByTagName('tbody')[0]

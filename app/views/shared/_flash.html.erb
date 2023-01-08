@@ -1,0 +1,3 @@
+<% flash.each do |key, message| %>
+  <%= tag.div message, class: "alert alert-#{ApplicationHelper.flash_class(key)}", role: "alert" %>
+<% end %>

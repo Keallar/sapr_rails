@@ -1,13 +1,59 @@
+<!--<div class="card mb-2" id="construction-table" data-controller="edit-construction-table"-->
+<!--     <%#= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>-->
+<!--  <div class="card-header"-->
+<!--       data-action="click->edit-construction-table#editTitle"-->
+<!--       data-search-target="title"-->
+<!--       id="construction-title">-->
+    <%#= @construction.name %>
+<!--  </div>-->
+<!--  <div class="card-body">-->
+<!--    <table class="table table-hover">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">№</th>-->
+<!--        <th scope="col">Длина стержня (L)</th>-->
+<!--        <th scope="col">Площадь поперечного сечения (A)</th>-->
+<!--        <th scope="col">Модуль упругости (E)</th>-->
+<!--        <th scope="col">Допускаемое напряжение (<%#= 963.chr %>)</th>-->
+<!--        <th scope="col">Сосредоточенная нагрузка (F)</th>-->
+<!--        <th scope="col">Погонная нагрузка (Q)</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+      <%# @rods.sort_by { |r| r.place_id  }.each do |rod| %>
+<!--        <tr data-search-target="constructRow">-->
+<!--          <td><%#= rod.place_id %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.l %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.a %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.e %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.b %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.f %></td>-->
+<!--          <td data-action="click->edit-construction-table#editCell"><%#= rod.q %></td>-->
+<!--        </tr>-->
+      <%# end %>
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
+
+
 <div class="card mb-2" id="construction-table" data-controller="edit-construction-table"
      <%= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>
-  <div class="card-header"
-       data-action="click->edit-construction-table#editTitle"
-       data-search-target="title"
-       id="construction-title">
-    <%= @construction.name %>
-  </div>
-  <div class="card-body">
-    <table class="table table-hover">
+
+  <%= form_with model: @construction, url: preprocessor_path(@construction) do |f| %>
+
+    <%= render 'shared/errors', object: @construction %>
+
+    <div class="card-header"
+         data-action="click->edit-construction-table#editTitle"
+         data-search-target="title"
+         id="construction-title">
+      <%= link_to :back do %>
+        <i class="bi bi-arrow-bar-left"></i>
+      <% end %>
+      <%= f.text_field :name %>
+    </div>
+    <table>
       <thead>
       <tr>
         <th scope="col">№</th>
@@ -20,18 +66,34 @@
       </tr>
       </thead>
       <tbody>
-      <% @rods.sort_by { |r| r.place_id  }.each do |rod| %>
-        <tr data-search-target="constructRow">
-          <td><%= rod.place_id %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.l %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.a %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.e %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.b %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.f %></td>
-          <td data-action="click->edit-construction-table#editCell"><%= rod.q %></td>
-        </tr>
-      <% end %>
+        <%= f.fields_for :rods, style: "display: inline" do |rod| %>
+          <tr>
+            <td><%= rod.number_field :place_id, readonly: true %></td>
+            <td><%= rod.number_field :l %></td>
+            <td><%= rod.number_field :a %></td>
+            <td><%= rod.number_field :e %></td>
+            <td><%= rod.number_field :b %></td>
+            <td><%= rod.number_field :f %></td>
+            <td><%= rod.number_field :q %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
-  </div>
+    <div class="d-flex justify-content-center mt-2 mb-2">
+      <div class="form-check me-4">
+        <%= f.check_box :left_support, class: 'form-check-input' %>
+        <%= f.label :left_support, 'Опора слева' %>
+      </div>
+      <div class="form-check">
+        <%= f.check_box :right_support, class: 'form-check-input' %>
+        <%= f.label :right_support, 'Опора справа' %>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mb-2 mt-2">
+      <%= f.submit 'Сохранить', class: "btn btn-primary me-2" %>
+      <div data-controller="visualizer">
+        <button type="button" class="btn btn-info" data-action="click->visualizer#draw">Отрисовка</button>
+      </div>
+    </div>
+  <% end %>
 </div>

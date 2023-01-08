@@ -12,8 +12,13 @@
 
   <body>
     <%= render partial: 'shared/header' %>
-      <div class="container-fluid bg-light">
+      <div class="container bg-light">
+        <div id="flash">
+          <%= render partial: "shared/flash" %>
+        </div>
+
         <%= yield %>
+
       </div>
     <%= render partial: 'shared/footer' %>
   </body>

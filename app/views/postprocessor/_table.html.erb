@@ -1,8 +1,17 @@
 <div class="card mb-2" id="construction-table"
      <%= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>
-  <div class="card-header"
+  <div class="card-header d-flex justify-content-between"
        id="construction-title">
-    <%= @construction.name %>
+    <div>
+      <%= link_to postprocessor_index_path, method: :get do %>
+        <i class="bi bi-arrow-bar-left"></i>
+      <% end %>
+      <%= @construction.name %>
+    </div>
+    <%= link_to edit_preprocessor_path(@construction), method: :get do %>
+      Препроцессор
+      <i class="bi bi-arrow-bar-right"></i>
+    <% end %>
   </div>
   <% @rods.sort_by { |r| r.place_id  }.each do |rod| %>
     <div class="card-body">
@@ -18,7 +27,7 @@
         </thead>
         <tbody>
             <tr>
-              <td>N</td>
+              <td>№</td>
               <% rod.n.size.times do |i| %>
                 <td><%= rod.n[i].round(2) %></td>
               <% end %>

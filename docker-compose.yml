@@ -2,7 +2,9 @@ version: '3.5'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: "bin/dev"
     volumes:
       - .:/usr/src
