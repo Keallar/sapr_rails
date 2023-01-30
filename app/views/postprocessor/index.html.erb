@@ -1,3 +1,5 @@
-<div class="container mt-4">
-  <%= render partial: 'postprocessor/construction_list' %>
-</div>
+<%= turbo_frame_tag 'postprocessor' do %>
+  <div class="container mt-4">
+    <%= render partial: 'postprocessor/construction_list' %>
+  </div>
+<% end %>

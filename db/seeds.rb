@@ -2,7 +2,7 @@ Construction.destroy_all
 
 5.times do |i|
   construction = Construction.create!(name: "Test_#{i}")
-  rand(10).times do|i|
+  rand(10).times do |i|
     Rod.create!(
       place_id: i + 1,
       l: rand(10),
@@ -17,7 +17,7 @@ Construction.destroy_all
 end
 
 construction = Construction.create!(name: "Test_#{5}", left_support: true, right_support: true)
-3.times do|i|
+3.times do |i|
   Rod.create!(
     place_id: i + 1,
     l: 4 + i,

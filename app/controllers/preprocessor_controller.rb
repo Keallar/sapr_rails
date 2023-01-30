@@ -9,18 +9,18 @@ class PreprocessorController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @rod = Rod.new
+  end
 
   def update
-    ActiveRecord::Base.transaction do
-      @construction.rods.destroy_all
-      if @construction.update!(construction_params)
-        flash.now[:success] = 'Construction updated!'
-        redirect_to preprocessor_index_path
-      else
-        flash.now[:error] = 'Error!'
-        render :edit
-      end
+    @construction.rods.destroy_all
+    if @construction.update!(construction_params)
+      flash.now[:success] = 'Construction updated!'
+      redirect_to preprocessor_index_path
+    else
+      flash.now[:error] = 'Error!'
+      render :edit
     end
   end
 

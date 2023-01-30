@@ -1,8 +1,8 @@
-<div class="container mt-4">
-  <%= render partial: 'preprocessor/constructions_list' %>
-  <div class="d-flex justify-content-center mt-2">
-    <%= turbo_frame_tag Construction.new do %>
+<%= turbo_frame_tag 'preprocessor' do %>
+  <div class="container mt-4">
+    <%= render partial: 'preprocessor/constructions_list' %>
+    <div class="d-flex justify-content-center mt-2">
       <%= render partial: "add_construction" %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

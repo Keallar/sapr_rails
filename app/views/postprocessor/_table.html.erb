@@ -1,17 +1,15 @@
 <div class="card mb-2" id="construction-table"
      <%= tag.attributes( 'data-edit-construction-table-id-value': @construction.id) %>>
-  <div class="card-header d-flex justify-content-between"
-       id="construction-title">
-    <div>
-      <%= link_to postprocessor_index_path, method: :get do %>
+  <div class="card-header d-flex justify-content-between" id="construction-title">
+    <div class="input-group">
+      <%= button_to postprocessor_index_path, method: :get,
+                    class: 'btn btn-outline-primary',
+                    id: "postproc-construction-#{@construction.id}" do %>
         <i class="bi bi-arrow-bar-left"></i>
       <% end %>
-      <%= @construction.name %>
+      <input type="text" class="form-control" readonly="true"
+             <%= tag.attributes id: "postproc-construction-#{@construction.id}", value: "#{@construction.name}" %>>
     </div>
-    <%= link_to edit_preprocessor_path(@construction), method: :get do %>
-      Препроцессор
-      <i class="bi bi-arrow-bar-right"></i>
-    <% end %>
   </div>
   <% @rods.sort_by { |r| r.place_id  }.each do |rod| %>
     <div class="card-body">

@@ -1,12 +1,10 @@
 <div id="constructions-list">
   <ul class="list-group">
     <% @constructions.each do |constr| %>
-      <%= turbo_frame_tag constr, data: { turbo_action: "advance" } do %>
-        <li class="list-group-item d-flex justify-content-center align-items-center">
-          <%= link_to constr.name,
-                      postprocessor_path(constr),
-                      class: "list-group-item-action link-primary mb-2 mt-2"%>
-        </li>
+      <%= turbo_frame_tag constr do %>
+        <%= link_to constr.name,
+                    postprocessor_path(constr),
+                    class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3"%>
       <% end %>
     <% end %>
   </ul>

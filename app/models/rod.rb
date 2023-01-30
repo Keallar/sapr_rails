@@ -6,4 +6,5 @@ class Rod < ApplicationRecord
 
   validates :place_id, numericality: { only_integer: true }
   validates :l, :a, :e, :b, :f, :q, presence: true
+  validates :l, :a, numericality: { greater_than: 0 }
 end

@@ -15,11 +15,11 @@
 # gem "pg"
 #
 default: &default
-  host: localhost
+  host: db
   adapter: postgresql
   encoding: unicode
-  username: admin
-  password:
+  username: user
+  password: pass
   port: 5432
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 

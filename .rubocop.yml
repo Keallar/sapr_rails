@@ -12,3 +12,6 @@ Style/Documentation:
 
 Metrics/MethodLength:
   Max: 50
+
+Style/StringLiterals:
+  Enabled: false

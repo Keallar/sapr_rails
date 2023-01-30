@@ -7,15 +7,19 @@ module ApplicationHelper
     'alert' => 'danger'
   }.freeze
 
-  def self.all_constructions
+  def all_constructions
     Construction.all
   end
 
-  def self.link_to_previous_page(link_title)
-    link_to_if
+  def flash_class(name)
+    FLASH_NAMES[name]
   end
 
-  def self.flash_class(name)
-    FLASH_NAMES[name]
+  def exist_or_new_constr_url(constr)
+    if !constr&.id.nil?
+      preprocessor_path(constr)
+    else
+      new_preprocessor_path
+    end
   end
 end

@@ -1,0 +1,11 @@
+<%= fields model: @rod do |rod| %>
+  <tr>
+    <td><%= rod.number_field :place_id, readonly: true, class: 'form-control' %></td>
+    <td><%= rod.number_field :l, class: 'form-control' %></td>
+    <td><%= rod.number_field :a, class: 'form-control' %></td>
+    <td><%= rod.number_field :e, class: 'form-control' %></td>
+    <td><%= rod.number_field :b, class: 'form-control' %></td>
+    <td><%= rod.number_field :f, class: 'form-control' %></td>
+    <td><%= rod.number_field :q, class: 'form-control' %></td>
+  </tr>
+<% end %>

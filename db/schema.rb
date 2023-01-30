@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_161254) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_184806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,15 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_161254) do
     t.datetime "updated_at", null: false
     t.boolean "left_support", default: false
     t.boolean "right_support", default: false
-  end
-
-  create_table "joints", force: :cascade do |t|
-    t.float "f1"
-    t.float "f2"
-    t.bigint "rod_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rod_id"], name: "index_joints_on_rod_id"
   end
 
   create_table "rods", force: :cascade do |t|
@@ -50,6 +41,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_161254) do
     t.index ["construction_id"], name: "index_rods_on_construction_id"
   end
 
-  add_foreign_key "joints", "rods"
   add_foreign_key "rods", "constructions"
 end

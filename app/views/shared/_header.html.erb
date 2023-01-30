@@ -16,7 +16,7 @@
         Конструкции
       </button>
       <ul class="dropdown-menu dropdown-menu-dark">
-        <% ApplicationHelper.all_constructions.each do |constr| %>
+        <% all_constructions.each do |constr| %>
           <%= link_to constr.name, edit_preprocessor_path(constr), class: "dropdown-item"%>
         <% end %>
       </ul>

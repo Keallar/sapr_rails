@@ -16,3 +16,5 @@ config/master.key
 config/credentials/*.key
 
 node_modules
+.DS_Store
+.idea

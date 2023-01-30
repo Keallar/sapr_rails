@@ -1,3 +1,9 @@
 <%= turbo_frame_tag Construction.new do %>
-  <%= link_to "Добавить новую конструкцию", new_preprocessor_path, class:  "btn btn-primary" %>
+
+  <%= link_to "Добавить новую конструкцию",
+              new_preprocessor_path,
+              class:  "btn btn-primary",
+              data: { turbo_frame: dom_id(Construction.new) }%>
+
 <% end %>
+
