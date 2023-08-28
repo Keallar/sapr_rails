@@ -19,7 +19,6 @@ export default class extends Controller {
             }
             rods.push(rod)
         }
-        console.log("RODS:", rods)
         const leftSupport = document.getElementById("support-left").checked
         const rightSupport = document.getElementById("support-right").checked
 

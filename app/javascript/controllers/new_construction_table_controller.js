@@ -7,7 +7,6 @@ export default class extends Controller {
     }
 
     addRow() {
-        console.log('Add')
         let tableRef = document.getElementById("construction-table")
             .getElementsByTagName('tbody')[0]
         let new_id = tableRef.rows.length
@@ -24,14 +23,12 @@ export default class extends Controller {
     }
 
     deleteRow() {
-        console.log('Delete')
         let tableRef = document.getElementById("construction-table")
             .getElementsByTagName('tbody')[0]
         tableRef.deleteRow(tableRef.rows.length - 1)
     }
 
     editTitle(e) {
-        console.log("editTitle")
         e.preventDefault()
         let constrTitle = e.target
         constrTitle.contentEditable = true
@@ -45,7 +42,6 @@ export default class extends Controller {
     }
 
     async saveEdited() {
-        console.log('saveEdited')
         const supportLeft = document.getElementById("support-left").checked
         const supportRight = document.getElementById("support-right").checked
         let constructionTitle = document.getElementById("construction-title")

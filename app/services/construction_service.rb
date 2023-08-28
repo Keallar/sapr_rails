@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 require 'matrix'
 
 class ConstructionService
   attr_reader :l, :a, :e, :f, :q, :construction, :u, :n, :s
+
+  def self.perform(construction)
+    new(construction).perform
+  end
 
   def initialize(construction)
     @construction = construction

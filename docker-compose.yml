@@ -3,7 +3,8 @@ version: '3.5'
 services:
   app:
     build: .
-    command: "bin/dev"
+    command: sh -c "rm -f tmp/pids/server.pid && bin/dev"
+    tty: true
     volumes:
       - .:/usr/src
     stdin_open: true
@@ -13,12 +14,14 @@ services:
       - db
 
   db:
-    image: postgres:latest
+    image: postgres
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pass
     volumes:
       - postgresql:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   postgresql:

@@ -24,29 +24,24 @@ export default class extends Controller {
     }
 
     deleteRow() {
-        console.log('Delete')
         let tableRef = document.getElementById("construction-table")
                                .getElementsByTagName('tbody')[0]
         tableRef.deleteRow(tableRef.rows.length - 1)
     }
 
     editTitle(e) {
-        console.log("editTitle")
         e.preventDefault()
         let constrTitle = e.target
         constrTitle.contentEditable = true
     }
 
     editCell(e) {
-        console.log('editCell')
         e.preventDefault()
         let cell = e.target
         cell.contentEditable = true
     }
 
     async saveEdited() {
-        console.log('saveEdited')
-        console.log(this.idValue)
         const supportLeft = document.getElementById("support-left").checked
         const supportRight = document.getElementById("support-right").checked
         let constructionTitle = document.getElementById("construction-title")
